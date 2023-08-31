@@ -1,0 +1,24 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1.1rem;
+    padding: 0.5rem;
+}
+.navbar .left{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar .left .menu li a{
+    color:black;
+    text-decoration: none;
+}
+.navbar .left .menu li a:hover{
+    color: red;
+}
+
+.navbar .right a:first{
+    margin-right: 5px;
+}
