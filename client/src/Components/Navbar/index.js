@@ -10,11 +10,11 @@ export default function Navigation() {
     <div className={styles.navbar}>
       <div className={styles.left}>
         <div className='logo'>
-          <Link to="/">Logo</Link>
+          <Link to="/" className={styles.logo}>Logo</Link>
         </div>
         <div className={styles.menu}>
           <ul>
-            <li><Link to={"/products"}>Products</Link></li>
+            <li><Link to={"/"}>Products</Link></li>
           </ul>
         </div>
       </div>

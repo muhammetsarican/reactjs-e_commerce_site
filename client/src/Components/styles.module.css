@@ -6,7 +6,7 @@
     padding: 0.5rem;
 }
 .navbar .left{
-    width: 50%;
+    width: 15%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,4 +21,7 @@
 
 .navbar .right a:first{
     margin-right: 5px;
+}
+.logo{
+    font-weight: bolder;
 }

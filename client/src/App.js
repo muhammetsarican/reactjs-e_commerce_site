@@ -4,7 +4,8 @@ import React from 'react'
 import Navigation from './Components/Navbar';
 import SignIn from './Pages/Auth/SignIn';
 import SignUp from './Pages/Auth/SignUp';
-import Products from "./Pages/Auth/Products";
+import Products from "./Pages/Products";
+import ProductDetail from "./Pages/ProductDetail";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<Products />}></Route>
+          <Route path="/product/:product_id" element={<ProductDetail />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
         </Routes>
