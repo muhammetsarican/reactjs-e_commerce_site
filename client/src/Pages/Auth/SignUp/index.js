@@ -2,7 +2,7 @@ import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, Flex, Form
 import React from 'react'
 import { useFormik } from "formik"
 import { validate as validationSchema } from "./validations"
-import { fetchRegister } from '../../api'
+import { fetchRegister } from '../../../api'
 import { useAuth } from '../../../Contexts/AuthContext'
 
 function SignUp() {

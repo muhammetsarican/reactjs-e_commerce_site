@@ -1,18 +1,14 @@
 import React from 'react'
 import { useAuth } from "../../Contexts/AuthContext"
 import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react'
-import { fetchLogout } from '../api';
+import { fetchLogout } from '../../api';
 import { Link } from "react-router-dom";
 
 function Profile() {
-    const { user } = useAuth();
+    const { user, logout } = useAuth();
     
-    const logout = async () => {
-        const refreshToken=localStorage.getItem("refresh-token");
-        const logoutResponse = await fetchLogout(refreshToken);
-        console.log(logoutResponse);
-        localStorage.removeItem("access-token");
-        localStorage.removeItem("refresh-token");
+    const handleLogout = async () => {
+        console.log(logout());
     }
     return (
         <div>
@@ -32,7 +28,7 @@ function Profile() {
                     </Box>
                     <Box mt="5">
                         <Link to="/signin">
-                            <Button width="full" colorScheme='red' onClick={logout}>Logout</Button>
+                            <Button width="full" colorScheme='red' onClick={handleLogout}>Logout</Button>
                         </Link>
                     </Box>
                 </Box>

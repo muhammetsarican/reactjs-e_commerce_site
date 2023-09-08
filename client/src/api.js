@@ -47,9 +47,9 @@ export const fetchMe=async ()=>{
     return meResponse;
 }
 
-export const fetchLogout= async(token)=>{
+export const fetchLogout= async()=>{
     const logoutResponse=await axios.post(`${process.env.REACT_APP_BASE_ENDPOINT}auth/logout`,{
-        refresh_token:token
+        refresh_token:localStorage.getItem("refresh-token")
     });
     return logoutResponse;
 }

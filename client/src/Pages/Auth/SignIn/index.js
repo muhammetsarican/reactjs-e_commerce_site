@@ -2,7 +2,7 @@ import { Alert, AlertIcon, AlertTitle, AlertDescription, Box, Button, Flex, Form
 import { useFormik } from 'formik';
 import React from 'react';
 import { validate as validationSchema } from "./validations";
-import { loginFetch } from '../../api';
+import { loginFetch } from '../../../api';
 import { useAuth } from '../../../Contexts/AuthContext';
 
 function SignIn() {
