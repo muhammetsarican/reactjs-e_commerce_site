@@ -10,6 +10,7 @@ import ProtectedRoute from "./Pages/ProtectedRoute";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NotFound from './Pages/NotFound';
 import Basket from './Pages/Basket';
+import Admin from './Pages/Admin';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/signup" component={SignUp}></Route>
           <ProtectedRoute path="/profile" component={Profile}></ProtectedRoute>
           <Route path="/basket" component={Basket}></Route>
+          <ProtectedRoute path="/admin" component={Admin} admin={true}></ProtectedRoute>
           <Route component={NotFound}></Route>
         </Switch>
       </div>

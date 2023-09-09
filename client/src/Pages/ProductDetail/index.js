@@ -13,7 +13,7 @@ function ProductDetail() {
     const { product_id } = useParams();
     const { isLoading, data, error } = useQuery(["products", product_id], () => fetchProduct(product_id))
     if (isLoading) return "Loading...";
-    if (error) return "An error was occured " + error.message;
+    if (error) return "An error has occured " + error.message;
 
     const removeFromBasket=items.find(item=>item._id===product_id);
 

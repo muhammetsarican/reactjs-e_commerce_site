@@ -43,8 +43,15 @@ export default function Navigation() {
                 </Link>
               )
             }
+            {user.role === "admin" && (
+              <Link to="/admin">
+                <Button ml="1" colorScheme='purple' variant={"outline"}>
+                  Admin
+                </Button>
+              </Link>
+            )}
             <Link to="/profile">
-              <Button colorScheme='yellow'>{user.email}</Button>
+              <Button ml="1" colorScheme='yellow'>{user.email}</Button>
             </Link>
           </>)
         }

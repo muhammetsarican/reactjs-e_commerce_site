@@ -1,10 +1,50 @@
-import { Box, Button, Flex, Heading, Image, Alert, AlertIcon, AlertTitle, AlertDescription, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { useBasket } from '../../Contexts/BasketContext'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import {
+    Box,
+    Button,
+    Flex,
+    Heading,
+    Image,
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
+    Text,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
+    FormControl,
+    FormLabel,
+    Textarea
+} from '@chakra-ui/react';
+import { fetchOrderList } from '../../api';
 
 function Basket() {
-    const { items, removeFromBasket, totalPrice } = useBasket()
+    const [address, setAddress] = useState("");
+    const { items, removeFromBasket, totalPrice, emptyBasket } = useBasket()
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const initialRef = useRef(null)
+
+    const handleOrderSubmit = async () => {
+        const itemIds = items.map((item) => item._id);
+        const input = {
+            address,
+            items:JSON.stringify(itemIds),
+        }
+        console.log(itemIds);
+        const orderResponse = await fetchOrderList(input);
+
+        emptyBasket()
+        onClose()
+        console.log(orderResponse)
+    }
     return (
         <div>
             <Flex alignItems={"center"} flexDirection={"column"} width={"full"}>
@@ -45,9 +85,34 @@ function Basket() {
                     }
                     {items.length > 0 && (
                         <Box>
-                            <Flex alignItems={"center"} justifyContent={"flex-end"} margin={"25"} border={"1px solid gray"} borderRadius={"5"} padding={"15"}>
+                            <Flex alignItems={"center"} justifyContent={"space-between"} margin={"25"} border={"1px solid gray"} borderRadius={"5"} padding={"15"}>
                                 <Text as="h1">Total: {totalPrice()}</Text>
+                                <Button colorScheme='green' variant={'outline'} onClick={onOpen}>Complete Order</Button>
                             </Flex>
+                            <Modal
+                                initialFocusRef={initialRef}
+                                isOpen={isOpen}
+                                onClose={onClose}
+                            >
+                                <ModalOverlay />
+                                <ModalContent>
+                                    <ModalHeader>Give an Order</ModalHeader>
+                                    <ModalCloseButton />
+                                    <ModalBody pb={6}>
+                                        <FormControl>
+                                            <FormLabel>Address</FormLabel>
+                                            <Textarea ref={initialRef} placeholder='Enter an Address...' onChange={(e) => setAddress(e.target.value)} />
+                                        </FormControl>
+                                    </ModalBody>
+
+                                    <ModalFooter>
+                                        <Button colorScheme='blue' mr={3} onClick={() => handleOrderSubmit()}>
+                                            Save
+                                        </Button>
+                                        <Button onClick={onClose}>Cancel</Button>
+                                    </ModalFooter>
+                                </ModalContent>
+                            </Modal>
                         </Box>
                     )}
                 </Box>

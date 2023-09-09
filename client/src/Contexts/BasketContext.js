@@ -24,12 +24,15 @@ const BasketProvider = ({ children }) => {
 
     const totalPrice=()=>items.reduce((acc, item)=>acc+item.price, 0);
     
+    const emptyBasket=()=>setItems([]);
+    
     const values = {
         items,
         setItems,
         addToBasket,
         removeFromBasket,
-        totalPrice
+        totalPrice,
+        emptyBasket,
     };
 
     return <BasketContext.Provider value={values}>{children}</BasketContext.Provider>
