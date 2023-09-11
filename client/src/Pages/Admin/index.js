@@ -1,9 +1,11 @@
 import { Box, Button, Flex } from '@chakra-ui/react'
 import React from 'react'
 import { Link, Route, Switch, useRouteMatch } from 'react-router-dom'
-import Home from "./Home/index"
-import Products from "./Products/index"
-import Orders from "./Orders/index"
+import Home from "./Home"
+import Products from "./Products"
+import Orders from "./Orders"
+import ProductDetail from './Product Detail'
+import ProductCreate from './Product Create'
 
 function Admin() {
     const {path, url}=useRouteMatch()
@@ -30,6 +32,8 @@ function Admin() {
             <Route exact path={`${path}`} component={Home}></Route>
             <Route path={`${path}/products`} component={Products}></Route>
             <Route path={`${path}/orders`} component={Orders}></Route>
+            <Route path={`${path}/product/create`} component={ProductCreate}></Route>
+            <Route exact strict path={`${path}/product/:product_id`} component={ProductDetail}></Route>
         </Switch>
     </Box>
   )

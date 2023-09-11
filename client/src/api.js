@@ -62,11 +62,22 @@ export const fetchOrderList = async (values) => {
 }
 
 export const fetchOrderListAdmin = async () => {
-    const {data} = await axios.get(`${process.env.REACT_APP_BASE_ENDPOINT}order`);
+    const { data } = await axios.get(`${process.env.REACT_APP_BASE_ENDPOINT}order`);
     return data;
 }
 
-export const fetchDeleteProduct=async (productId)=>{
-    const {data }=await axios.delete(`${process.env.REACT_APP_BASE_ENDPOINT}product/${productId}`);
+export const fetchDeleteProduct = async (productId) => {
+    const { data } = await axios.delete(`${process.env.REACT_APP_BASE_ENDPOINT}product/${productId}`);
+    return data;
+}
+export const fetchPutProduct = async (items, productId) => {
+    const { data } = await axios.put(`${process.env.REACT_APP_BASE_ENDPOINT}product/${productId}`,
+        items
+    )
+    return data;
+}
+
+export const fetchPostProduct = async (values)=>{
+    const {data}=await axios.post(`${process.env.REACT_APP_BASE_ENDPOINT}product`, values);
     return data;
 }

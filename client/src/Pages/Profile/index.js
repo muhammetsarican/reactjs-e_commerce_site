@@ -1,7 +1,6 @@
 import React from 'react'
 import { useAuth } from "../../Contexts/AuthContext"
 import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react'
-import { fetchLogout } from '../../api';
 import { Link } from "react-router-dom";
 
 function Profile() {
